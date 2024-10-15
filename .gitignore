@@ -1,0 +1,6 @@
+venv*/
+twm/
+data/**/*.png
+**/**/__pycache__
+tracking/data/
+!data/TrackEval
