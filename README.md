@@ -1,16 +1,27 @@
-# TWM
+# Tracking on KITTI dataset using YOLOv8 and modified SORT tracker with UKF filter
 
 
 
-## Tracking
-1. Clone `https://github.com/abewley/sort` into tracking folder: `clone https://github.com/abewley/sort.git tracking`
-2. Install requirements: `pip install -r requirements.txt`
-3. Run benchmark.py :
+## Main Setup
+1. Install python3.8 and select (e.g. by using `pyenv`)
+2. Create and activate virtual environment of your choice (e.g. `python3 -m venv venv`)
+3. Install numpy `pip install numpy==1.21.0`
+4. Install other requirements: `pip install -r requirements.txt`
+4. Run benchmark.py :
 
-Example usage:
+
+
+## Evaluation
+1. Clone TrackEval: `git clone https://github.com/JonathonLuiten/TrackEval.git`
+2. Install requirements: `pip install -r TrackEval/requirements.txt` or `pip install -r TrackEval/minimum_requirements.txt`
+3. Run tracking on the entire kitti dataset
+4. Run `TrackEval/scripts/run_kitti.py`
+5. Results are in folder(s) `TrackEval/data/trackers/kitti/kitti_2d_box_train/{tracker_name}`
+
+# Usage:
 ```bash
-python benchamrk.py  recording.mp4
-python benchamrk.py  recording.mp4 --model finetuned --filiter ukf --max_age 20 --iou_threshold 0.3
+python benchmark.py  recording.mp4
+python benchmark.py  recording.mp4 --model finetuned --filter ukf --max_age 20 --iou_threshold 0.3
 
 
 Available options:
@@ -23,10 +34,3 @@ iou_threshold (float) default = 0.2 - Tracker iou_threshold
 framerate (int) default = 30 - Video framerate
 ```
 
-
-## Evaluation
-1. Run tracking with max 1 argument
-2. Install Python 3.8
-3. Install requirements: `pip install -r TrackEval/requirements.txt` or `pip install -r TrackEval/minimum_requirements.txt`
-4. Run `TrackEval/scripts/run_kitti.py`
-5. Results are in folder(s) `TrackEval\data\trackers\kitti\kitti_2d_box_train\{tracker_name}`
